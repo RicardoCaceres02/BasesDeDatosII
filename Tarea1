@@ -1,0 +1,37 @@
+use tarea1
+
+create table Hotel(
+    codigo int PRIMARY KEY not null,
+    nombre VARCHAR(100) not NULL,
+    direccion VARCHAR(100)
+);
+
+CREATE TABLE reserva(
+    fechain DATE,
+    fechaout date,
+    cantidad_personas INT DEFAULT 0
+);
+
+CREATE TABLE Cliente(
+    identidad VARCHAR not null,
+    nombre VARCHAR(50),
+    telefono VARCHAR(50)
+);
+
+CREATE TABLE Boleto(
+    codigo  int NOT NULL,
+    no_vuelo int,
+    fecha date,
+    destino VARCHAR(50)
+);
+
+create TABLE Aerolinea(
+    codigo int not NULL PRIMARY KEY,
+    descuento int
+);
+
+ALTER TABLE Aerolinea ADD CONSTRAINT ck_desc
+CHECK (descuento >= 10)
+
+ALTER TABLE Boleto ADD CONSTRAINT ck_dest
+CHECK (destino in ('Guatemala','Guatemala', 'Panamá'))
